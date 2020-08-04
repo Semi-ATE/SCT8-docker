@@ -4,13 +4,13 @@ The [PetaLinux Tools](https://www.xilinx.com/products/design-tools/embedded-soft
 
 # Usage
   - [SCT8-Board](https://github.com/Semi-ATE/SCT8-Board)
-    - ZU
+    - [XCZU6CGU](https://www.avnet.com/shop/emea/products/xilinx/xczu6cg-1ffvb1156i-3074457345631176885)
     - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
   
   - [PCB Tester](https://github.com/Semi-ATE/PCB-Tester)
-    - PCB-Tester-Board
+    - [PCB-Tester-Board](https://github.com/Semi-ATE/PCB-Tester/tree/master/hardware/electronics/altium/PCB-Tester-Board)
       - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
-    - PCB-Relay-Board
+    - [PCB-Relay-Board](https://github.com/Semi-ATE/PCB-Tester/tree/master/hardware/electronics/altium/PCB-Relay-Board)
       - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
 
 ### References
