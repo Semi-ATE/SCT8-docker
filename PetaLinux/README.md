@@ -3,10 +3,15 @@
 The [PetaLinux Tools](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html) from [Xilinx](https://www.xilinx.com/) offer everything necessary to customize, build and deploy Embedded Linux solutions on Xilinx processing systems designed with [Vivado](https://www.xilinx.com/products/design-tools/vivado.html) for the [Zynq UltraScale+ MPSoC](https://www.xilinx.com/products/silicon-devices/soc/zynq-ultrascale-mpsoc.html).
 
 # Usage
-  - SCT8-Board
+  - [SCT8-Board](https://github.com/Semi-ATE/SCT8-Board)
+    - ZU
+    - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
   
-
-We use the [ZU...]() on the SCT9-Board which holds both the CPU's as well as the [FPGA](https://en.wikipedia.org/wiki/Field-programmable_gate_array), and thus, to auto-build we need a docker image for it. 
+  - [PCB Tester](https://github.com/Semi-ATE/PCB-Tester)
+    - PCB-Tester-Board
+      - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
+    - PCB-Relay-Board
+      - [XC7A15T](https://www.avnet.com/shop/emea/products/xilinx/xc7a15t-1csg324c-3074457345629544898/)
 
 ### References
   - [blog: Using Docker with Petalinux](https://patocarr.com/blog/2018/10/01/Using-Docker-with-Petalinux.html)
