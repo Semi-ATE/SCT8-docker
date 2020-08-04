@@ -1,6 +1,6 @@
 # PetaLinux
 
-The [PetaLinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html) Tools from [Xilinx](https://www.xilinx.com/) offer everything necessary to customize, build and deploy Embedded Linux solutions on Xilinx processing systems designed with [Vivado](https://www.xilinx.com/products/design-tools/vivado.html) for the [Zynq UltraScale+ MPSoC](https://www.xilinx.com/products/silicon-devices/soc/zynq-ultrascale-mpsoc.html).
+The [PetaLinux Tools](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html) from [Xilinx](https://www.xilinx.com/) offer everything necessary to customize, build and deploy Embedded Linux solutions on Xilinx processing systems designed with [Vivado](https://www.xilinx.com/products/design-tools/vivado.html) for the [Zynq UltraScale+ MPSoC](https://www.xilinx.com/products/silicon-devices/soc/zynq-ultrascale-mpsoc.html).
 
 ### References
   - [blog: Using Docker with Petalinux](https://patocarr.com/blog/2018/10/01/Using-Docker-with-Petalinux.html)
