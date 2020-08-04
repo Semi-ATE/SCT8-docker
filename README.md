@@ -2,8 +2,8 @@
 
 A collection of [dockerfile](https://docs.docker.com/engine/reference/builder/)s used in the [Semi-ATE](https://github.com/Semi-ATE) organization.
 
-https://pythonspeed.com/articles/activate-conda-dockerfile/
 
+Our docker containers will be launched from [GitHub Actions]() using [ubuntu:20.04]().
 
 we will run the Docker containers on Ubuntu:20.04 in github actions, therefore the docker engine is 
 
@@ -21,12 +21,9 @@ The idea is **not** to host the image(s) on [docker hub](https://hub.docker.com/
 ### References
   - [dockerfile reference](https://docs.docker.com/engine/reference/builder/)
   - [dockerfile best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+  - [conda in dockerfile](https://pythonspeed.com/articles/activate-conda-dockerfile/)
 
 
-
-  - petalinux
-    - [Xilinx](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html)
-    - [z4yx](https://github.com/z4yx/petalinux-docker/blob/master/Dockerfile)
   - mcuxpresso
     - [NXP](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
     - [mneil](https://gist.github.com/mneil/f0894b715c43a5387b15a30afd7015e1)
