@@ -1,4 +1,5 @@
-# SCT8-docker
+# docker image(s) to build the SCT8-Board
+
 docker image to build the SCT8-Board project
 
 The SCT8-docker image should contain the following items:
