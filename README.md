@@ -19,8 +19,8 @@ The SCT8-docker image should contain the following items:
 The idea is **not** to host the image(s) on [docker hub](https://hub.docker.com/), but on [github packages](https://github.com/features/packages), so that the image is faster present when building with [docker actions](https://github.com/features/actions).
 
 ### References
-  - [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
   - [dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+  - [dockerfile best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 
 
