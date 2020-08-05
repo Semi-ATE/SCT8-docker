@@ -55,7 +55,13 @@ $ docker run --name=goofy mcuxpresso:11.2.0_4120
 ### start a stopped container
 
 ```sh
-$ sudo start
+$ docker ps -a
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS                         PORTS               NAMES
+1a241ad7d12b        mcuxpresso:11.2.0_4120         "/bin/bash"              About an hour ago   Up About an hour                                   tom
+7a949c28e2af        centos                         "cat /etc/os-release"    2 days ago          Exited (0) 2 days ago                              jovial_lewin
+6033823d5db0        ubuntu:19.10                   "/bin/bash"              2 days ago          Exited (0) 2 days ago                              funny_pike
+c3eb9bfe6192        condaforge/linux-anvil-comp7   "/opt/conda/bin/tini…"   2 weeks ago         Exited (1) 2 weeks ago                             naughty_mendel
+$ sudo docker start c3eb9bfe6192
 ```
 
 ### remover a stopped container
