@@ -1,4 +1,4 @@
-### list docker images
+### list docker images : docker images
 
 ```sh
 $ docker images -a
@@ -6,10 +6,15 @@ REPOSITORY                       TAG                 IMAGE ID            CREATED
 mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours ago         1.72GB
 $
 ```
-### remove docker image
+### remove docker image : docker rmi
 
 ```sh
+$ docker images -a
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours ago         1.72GB
 $ docker rmi bd4190edc661
+$ docker images -a
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
 $
 ```
 
