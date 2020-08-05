@@ -42,7 +42,7 @@ c3eb9bfe6192        condaforge/linux-anvil-comp7   "/opt/conda/bin/tini…"   2 
 $
 ```
 
-### create a container from an image
+### create a container from an image : docker run <IMAGE_ID>
 
 ```sh
 $ docker images -a
@@ -51,8 +51,7 @@ mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours
 $ docker run --name=goofy mcuxpresso:11.2.0_4120
 ```
 
-
-### start a stopped container
+### start a container : docker run <CONTAINER_ID>
 
 ```sh
 $ docker ps -a
@@ -64,9 +63,14 @@ c3eb9bfe6192        condaforge/linux-anvil-comp7   "/opt/conda/bin/tini…"   2 
 $ sudo docker start c3eb9bfe6192
 ```
 
-### remover a stopped container
+### remover a (stopped) container : docker rm <CONTAINER_ID/NAME>
 
+### remive a container on exit : docker run -rm <IMAGE...
 
-### stop a running container
+### stop a running container : docker stop
+
+### stop all runnig containers : docker stop $(docker ps -a -q)
+
+### remove all containers : docker rm $(docker ps -a -q)
 
 
