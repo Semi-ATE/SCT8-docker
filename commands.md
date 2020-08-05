@@ -21,8 +21,7 @@ $
 
 
 
-
-### list running containers
+### list running containers : docker ps
 
 ```sh
 $ docker ps
@@ -31,7 +30,7 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 $
 ```
 
-### list all containers (running or not)
+### list all containers (running or not) : docker ps -a
 
 ```sh
 $ docker ps -a
@@ -58,3 +57,10 @@ $ docker run --name=goofy mcuxpresso:11.2.0_4120
 ```sh
 $ sudo start
 ```
+
+### remover a stopped container
+
+
+### stop a running container
+
+
