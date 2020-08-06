@@ -110,36 +110,28 @@ A Volume is a a file system that lives on a host machine outside of any containe
 
 #### Creating Volumes
 
-Volumes can be created via a Dockerfile or an API request.
+Volumes can be created via a Dockerfile or with CLI commands.
 
-Here’s a Dockerfile instruction that creates a volume at run time:
+##### Dockerfile
 
+```sh
 VOLUME /my_volume
+```
 
 Then, when the container is created, Docker will create the volume with any data that already exists at the specified location. Note that if you create a volume using a Dockerfile, you still need to declare the mountpoint for the volume at run time.
 
-You can also create a volume in a Dockerfile using JSON array formatting. See this earlier article in this series for more on Dockerfiles.
+##### CLI Commands
 
-Volumes also can be instantiated at run time from the command line.
-Volume CLI Commands
-Create
+`docker volume <command>` where command is one of:
+  - `ls` ➜ list docker volumens
+  - `create --name <volume>` ➜ create a stand-alone volume with docker
+  - `inspect <volume>` ➜ give info about the <volume>
+  - `remove <volume>` ➜ delete the volume
+  - `prune` ➜ delete all unused volumes
 
-You can create a stand-alone volume with docker volume create —-name my_volume.
-Inspect
+If the volume is associated with any containers, you cannot remove it until the containers are deleted. Even then, Docker sometimes doesn’t realize that the containers are gone. If this occurs, you can use `docker system prune` to clean up all your Docker resources. Then you should should be able to delete the volume.
 
-List Docker volumes with docker volume ls.
-
-Volumes can be inspected with docker volume inspect my_volume.
-Remove
-
-Then you can delete the volume with docker volume rm my_volume.
-
-Dangling volumes are volumes not used by a container. You can remove all dangling volumes with docker volume prune. Docker will warn you and ask for confirmation before deletion.
-
-If the volume is associated with any containers, you cannot remove it until the containers are deleted. Even then, Docker sometimes doesn’t realize that the containers are gone. If this occurs, you can use docker system prune to clean up all your Docker resources. Then you should should be able to delete the volume.
-Image for post
-Image for post
-Where your data might be stored
+#### Where your data might be stored
 
 Working with --mount vs. --volume
 
