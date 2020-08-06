@@ -5,10 +5,10 @@ Use `docker container <command>` where <command> is one of:
   - `start` ➜ Start an existing container.
   - `run` ➜ Create a new container and start it.
     - `docker container run -it -p 1000:8000 --rm my_image`
-      `-i` is short for --interactive. Keep STDIN open even if unattached.
-      `-t` is short for --tty. Allocates a pseudo terminal that connects your terminal with the container’s STDIN and STDOUT.
-      `-p` is short for --port. The port is the interface with the outside world.1000:8000 maps the Docker port 8000 to port 1000 on your machine. If you had an app that output something to the browser you could then navigate your browser to localhost:1000 and see it.
-      `--rm` Automatically delete the container when it stops running.
+      - `-i` is short for --interactive. Keep STDIN open even if unattached.
+      - `-t` is short for --tty. Allocates a pseudo terminal that connects your terminal with the container’s STDIN and STDOUT.
+      - `-p` is short for --port. The port is the interface with the outside world.1000:8000 maps the Docker port 8000 to port 1000 on your machine. If you had an app that output something to the browser you could then navigate your browser to localhost:1000 and see it.
+      - `--rm` Automatically delete the container when it stops running.
   - `ls` ➜ List running containers.
   - `inspect` ➜ See lots of info about a container.
   - `logs` ➜ Print logs.
