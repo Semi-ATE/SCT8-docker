@@ -11,7 +11,9 @@ Use `docker container <command>` where <command> is one of:
       - `--rm` Automatically delete the container when it stops running.
       - `<image>` 
     - `docker container run -it <image> <command>`
-      - `sh` is a command you could specify at run time. `sh` will start a shell session inside your container that you can interact with through your terminal. `sh` is preferable to `bash` __for Alpine images__ because Alpine images don’t come with bash installed. Type exit to end the interactive shell session.
+      - `sh` is a command you could specify at run time. `sh` will start a shell session inside your container that you can interact with through your terminal. `sh` is preferable to `bash` __for Alpine images__ because Alpine images don’t come with bash installed. Type `exit` to end the interactive shell session.
+    - `docker container run -d <image>`
+      - `-d` is short for --detach. Run the container in the background. Allows you to use the terminal for other commands while your container runs.
 
 Notice that we combined -i and -t into -it.
   - `ls` ➜ List running containers.
