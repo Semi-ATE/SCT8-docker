@@ -21,6 +21,8 @@
 - `VOLUME` ➜ creates a directory mount point to access and store persistent [data]().
 
 [CMD vs ENTRYPOINT](https://phoenixnap.com/kb/docker-cmd-vs-entrypoint)
+[ENV vs ARG](https://vsupalov.com/docker-arg-vs-env/)
+[ENV and ARG](https://vsupalov.com/docker-build-time-env-values/)
 
 ## Images
 
