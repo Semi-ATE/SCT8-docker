@@ -1,7 +1,14 @@
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 
 - `FROM` ➜ specifies the base (parent) image.
-- `LABEL` ➜ provides metadata. Good place to include maintainer info.
+- `MAINTAINER` ➜ states the maintainer
+  - `MAINTAINER Semi-ATE <Semi-ATE@users.noreply.github.com>`
+- `LABEL` ➜ provides metadata.
+  ```sh
+  LABEL multi.label1="value1" \
+      multi.label2="value2" \
+      other="value3"
+  ```
 - `ENV` ➜ sets a persistent environment variable.
 - `RUN` ➜ runs a command and creates an image layer. Used to install packages into containers.
 - `COPY` ➜ copies files and directories **to** the container.
