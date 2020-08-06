@@ -1,18 +1,17 @@
 ## Dockerfile
 
-`FROM` ➜ specifies the base (parent) image.
-`LABEL` ➜ provides metadata. Good place to include maintainer info.
-`ENV` ➜ sets a persistent environment variable.
-`RUN` ➜ runs a command and creates an image layer. Used to install packages into containers.
-`COPY` ➜ copies files and directories **to** the container.
-`ADD` ➜ like `COPY`, but you can use also a URL as source, or a .tar file that automatically unpacked in the container.
-`CMD` ➜ The 'entry point' for an executing container, there thus can be only **one** CMD!
-`WORKDIR` ➜ sets the working directory for the instructions that follow.
-`ARG` ➜ defines a variable to pass to Docker at build-time.
-`ENTRYPOINT` ➜ provides command and arguments for an executing container. Arguments persist.
-`EXPOSE` ➜ exposes a port.
-`VOLUME` ➜ creates a directory mount point to access and store persistent data.
-
+- `FROM` ➜ specifies the base (parent) image.
+- `LABEL` ➜ provides metadata. Good place to include maintainer info.
+- `ENV` ➜ sets a persistent environment variable.
+- `RUN` ➜ runs a command and creates an image layer. Used to install packages into containers.
+- `COPY` ➜ copies files and directories **to** the container.
+- `ADD` ➜ like `COPY`, but you can use also a URL as source, or a .tar file that automatically unpacked in the container.
+- `CMD` ➜ The 'entry point' for an executing container, there thus can be only **one** CMD!
+- `WORKDIR` ➜ sets the working directory for the instructions that follow.
+- `ARG` ➜ defines a variable to pass to Docker at build-time.
+- `ENTRYPOINT` ➜ provides command and arguments for an executing container. Arguments persist.
+- `EXPOSE` ➜ exposes a port.
+- `VOLUME` ➜ creates a directory mount point to access and store persistent data.
 
 ## Images
 
