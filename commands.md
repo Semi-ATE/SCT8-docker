@@ -10,7 +10,7 @@ Use `docker container <command>` where <command> is one of:
       - `-p` is short for --port. The port is the interface with the outside world.1000:8000 maps the Docker port 8000 to port 1000 on your machine. If you had an app that output something to the browser you could then navigate your browser to localhost:1000 and see it.
       - `--rm` Automatically delete the container when it stops running.
       - `<image>` 
-    - `docker container run -it <image> <command>
+    - `docker container run -it <image> <command>`
       - `sh` is a command you could specify at run time. `sh` will start a shell session inside your container that you can interact with through your terminal. `sh` is preferable to `bash` __for Alpine images__ because Alpine images don’t come with bash installed. Type exit to end the interactive shell session.
 
 Notice that we combined -i and -t into -it.
