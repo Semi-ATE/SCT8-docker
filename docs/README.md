@@ -63,7 +63,7 @@ Use `docker container <command>` where <command> is one of:
 
 
 
-## Volumes
+## Data
 
 Data in Docker can either be temporary or persistent.
   - **Temporary** data :
@@ -75,6 +75,121 @@ Data in Docker can either be temporary or persistent.
     There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
 
  ![volumes](/docs/docker_volume.png)
+
+  Bind mounts are difficult to back up, migrate, or share with other Containers. Volumes are a better way to persist data.
+
+### Volumes
+
+A Volume is a a file system that lives on a host machine outside of any container. Volumes are created and managed by Docker. Volumes are:
+
+  - persistent
+  - free-floating filesystems, separate from any one container
+  - sharable with other containers
+  - efficient for input and output
+  - able to be hosted on remote cloud providers
+  - encryptable
+  - nameable
+  - able to have their content pre-populated by a container
+  - handy for testing
+
+That’s a lot of useful functionality! Now let’s look at how you make a Volume.
+
+#### Creating Volumes
+
+Volumes can be created via a Dockerfile or an API request.
+
+Here’s a Dockerfile instruction that creates a volume at run time:
+
+VOLUME /my_volume
+
+Then, when the container is created, Docker will create the volume with any data that already exists at the specified location. Note that if you create a volume using a Dockerfile, you still need to declare the mountpoint for the volume at run time.
+
+You can also create a volume in a Dockerfile using JSON array formatting. See this earlier article in this series for more on Dockerfiles.
+
+Volumes also can be instantiated at run time from the command line.
+Volume CLI Commands
+Create
+
+You can create a stand-alone volume with docker volume create —-name my_volume.
+Inspect
+
+List Docker volumes with docker volume ls.
+
+Volumes can be inspected with docker volume inspect my_volume.
+Remove
+
+Then you can delete the volume with docker volume rm my_volume.
+
+Dangling volumes are volumes not used by a container. You can remove all dangling volumes with docker volume prune. Docker will warn you and ask for confirmation before deletion.
+
+If the volume is associated with any containers, you cannot remove it until the containers are deleted. Even then, Docker sometimes doesn’t realize that the containers are gone. If this occurs, you can use docker system prune to clean up all your Docker resources. Then you should should be able to delete the volume.
+Image for post
+Image for post
+Where your data might be stored
+
+Working with --mount vs. --volume
+
+You will often use flags to refer to your volumes. For example, to create a volume at the same time you create a container use the following:
+
+docker container run --mount source=my_volume, target=/container/path/for/volume my_image
+
+In the old days (i.e. pre-2017) 😏the --volume flag was popular. Originally, the -v or --volume flag was used for standalone containers and the --mount flag was used with Docker Swarms. However, beginning with Docker 17.06, you can use --mount in all cases.
+
+The syntax for --mount is a bit more verbose, but it’s preferred over --volume for several reasons. --mount is the only way you can work with services or specify volume driver options. It’s also simpler to use.
+
+You’ll see a lot of -v’s in existing code. Beware that the format for the options is different for --mount and --volume. You often can’t just replace a -v in your existing code with a --mount and be done with it.
+
+The biggest difference is that the -v syntax combines all the options together in one field, while the --mount syntax separates them. Let’s see --mount in action!
+Image for post
+Image for post
+Easy enough to mount
+
+--mount — options are key-value pairs. Each pair is formatted like this: key=value, with a comma between one pair and the next. Common options:
+
+    type — mount type. Options are bind, volume, or tmpfs. We’re all about the volume.
+    source — source of the mount. For named volumes, this is the name of the volume. For unnamed volumes, this option is omitted. The key can be shortened to src.
+    destination — the path where the file or directory is mounted in the container. The key can be shortened to dst or target.
+    readonly —mounts the volume as read-only. Optional. Takes no value.
+
+Here’s an example with lots of options:
+
+docker run --mount type=volume,source=volume_name,destination=/path/in/container,readonly my_image
+
+Image for post
+Image for post
+Volumes are like spices — they make most things better. 🥘
+Wrap
+Recap of Key Volume Commands
+
+    docker volume create
+    docker volume ls
+    docker volume inspect
+    docker volume rm
+    docker volume prune
+
+Common options for the --mount flag in docker run --mount my_options my_image:
+
+    type=volume
+    source=volume_name
+    destination=/path/in/container
+    readonly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Misc
 
