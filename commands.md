@@ -36,7 +36,7 @@ Use `docker container <command>` where <command> is one of:
 ## Images
 
 Use `docker image <command>` where <command> is one of:
-  - `build` ➜ Build an image.
+  - `build` ➜ Build an image from a Dockerfile
     - `docker image build -t <repo>/<image>:<tag> .` ➜ Build a Docker image named <image> from the Dockerfile located at the specified path or URL.
       - `-t` is short for tag. Tells docker to tag the image with the provided tag. In this case <tag> .
       - The `.` (period) at the end of the command tells Docker to build the image according to the Dockerfile in the current working directory.
@@ -44,9 +44,13 @@ Use `docker image <command>` where <command> is one of:
   - `ls` ➜ List images.
     - `docker image ls` ➜ List your images. Shows you the size of each image, too.
   - `history` ➜ See intermediate image info.
+    - `docker image history <image>`
   - `inspect` ➜ See lots of info about an image, including the layers.
+    - `docker image inspect <image>`
   - `rm` ➜ Delete an image.
-
+    - `docker image rm <image> ➜ Delete the specified image (locally)
+    - `docker image rm $(docker images -a -q)` ➜ Delete **all** (local) images.
+  
 ## Misc
 
   - `docker version` ➜ List info about your Docker Client and Server versions.
