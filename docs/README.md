@@ -70,11 +70,11 @@ Data in Docker can either be temporary or persistent.
   
     Data can be kept temporarily inside a Docker container in two ways. By default, files created by an application inside a container are stored in the writable layer of the container. You don’t have to set anything up. This is the quick and dirty way. Just save a file and go about your business. However, when you container ceases to exist, so will your data. You have another option if you want better performance for saving temporary data with Docker. If you don’t need your data to persist beyond the life of the container, a tmpfs mount is a temporary mount that uses the host’s memory. A tmpfs mount has the benefit of faster read and write operations. Many times you will want your data to exist even after the container is long gone. You need to persist your data.
 
-  - **Persistent** Data :
+  - **Persistent** data :
   
     There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
 
-
+ ![volumes](/docs/volume.jpg)
 
 ## Misc
 
