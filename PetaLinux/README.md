@@ -7,7 +7,7 @@ The [PetaLinux Tools](https://www.xilinx.com/products/design-tools/embedded-soft
 ```sh
 $ chmod +x ./build.sh
 $ ./build.sh
-
+```
 
 ```sh
 docker build --build-arg PETA_VERSION=2018.1 --build-arg PETA_RUN_FILE=petalinux-v2018.1-final-installer.run -t petalinux:2018.1 .
