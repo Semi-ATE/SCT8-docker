@@ -56,85 +56,30 @@ Use `docker image <command>` where <command> is one of:
   - `docker version` ➜ List info about your Docker Client and Server versions.
   - `docker login` ➜ Log in to a Docker registry.
   - `docker system prune` ➜ Delete all unused containers, unused networks, and dangling images.
+    - `docker system prune -a --volumes`
+      - `-a` is short for --all. Delete unused images, not just dangling ones.
+      - `--volumes` Remove unused [volumes]().
 
 
 
 
+## Volumes
 
+Data in Docker can either be temporary or persistent.
 
-### list docker images : docker images
+### Temporary data
 
-```sh
-$ docker images -a
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours ago         1.72GB
-$
-```
-### remove docker image : docker rmi
+Data can be kept temporarily inside a Docker container in two ways.
 
-```sh
-$ docker images -a
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours ago         1.72GB
-$ docker rmi bd4190edc661
-$ docker images -a
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-$
-```
+By default, files created by an application inside a container are stored in the writable layer of the container. You don’t have to set anything up. This is the quick and dirty way. Just save a file and go about your business. However, when you container ceases to exist, so will your data.
 
+You have another option if you want better performance for saving temporary data with Docker. If you don’t need your data to persist beyond the life of the container, a tmpfs mount is a temporary mount that uses the host’s memory. A tmpfs mount has the benefit of faster read and write operations.
 
+Many times you will want your data to exist even after the container is long gone. You need to persist your data.
 
+### Persistent Data
 
-### list running containers : docker ps
+There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
 
-```sh
-$ docker ps
-CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
-1a241ad7d12b        mcuxpresso:11.2.0_4120   "/bin/bash"         About an hour ago   Up About an hour                        tom
-$
-```
-
-### list all containers (running or not) : docker ps -a
-
-```sh
-$ docker ps -a
-CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS                         PORTS               NAMES
-1a241ad7d12b        mcuxpresso:11.2.0_4120         "/bin/bash"              About an hour ago   Up About an hour                                   tom
-7a949c28e2af        centos                         "cat /etc/os-release"    2 days ago          Exited (0) 2 days ago                              jovial_lewin
-6033823d5db0        ubuntu:19.10                   "/bin/bash"              2 days ago          Exited (0) 2 days ago                              funny_pike
-c3eb9bfe6192        condaforge/linux-anvil-comp7   "/opt/conda/bin/tini…"   2 weeks ago         Exited (1) 2 weeks ago                             naughty_mendel
-$
-```
-
-### create a container from an image : docker run <IMAGE_ID>
-
-```sh
-$ docker images -a
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-mcuxpresso                       11.2.0_4120         bd4190edc661        2 hours ago         1.72GB
-$ docker run --name=goofy mcuxpresso:11.2.0_4120
-```
-
-### start a container : docker run <CONTAINER_ID>
-
-```sh
-$ docker ps -a
-CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS                         PORTS               NAMES
-1a241ad7d12b        mcuxpresso:11.2.0_4120         "/bin/bash"              About an hour ago   Up About an hour                                   tom
-7a949c28e2af        centos                         "cat /etc/os-release"    2 days ago          Exited (0) 2 days ago                              jovial_lewin
-6033823d5db0        ubuntu:19.10                   "/bin/bash"              2 days ago          Exited (0) 2 days ago                              funny_pike
-c3eb9bfe6192        condaforge/linux-anvil-comp7   "/opt/conda/bin/tini…"   2 weeks ago         Exited (1) 2 weeks ago                             naughty_mendel
-$ sudo docker start c3eb9bfe6192
-```
-
-### remover a (stopped) container : docker rm <CONTAINER_ID/NAME>
-
-### remive a container on exit : docker run -rm <IMAGE...
-
-### stop a running container : docker stop
-
-### stop all runnig containers : docker stop $(docker ps -a -q)
-
-### remove all containers : docker rm $(docker ps -a -q)
 
 
