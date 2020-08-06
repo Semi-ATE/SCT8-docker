@@ -1,3 +1,26 @@
+## Dockerfile
+
+
+
+
+## Images
+
+Use `docker image <command>` where <command> is one of:
+  - `build` ➜ Build an image from a Dockerfile
+    - `docker image build -t <repo>/<image>:<tag> .` ➜ Build a Docker image named <image> from the Dockerfile located at the specified path or URL.
+      - `-t` is short for tag. Tells docker to tag the image with the provided tag. In this case <tag> .
+      - The `.` (period) at the end of the command tells Docker to build the image according to the Dockerfile in the current working directory.
+  - `push` ➜ Push an image to a remote registry.
+  - `ls` ➜ List images.
+    - `docker image ls` ➜ List your images. Shows you the size of each image, too.
+  - `history` ➜ See intermediate image info.
+    - `docker image history <image>`
+  - `inspect` ➜ See lots of info about an image, including the layers.
+    - `docker image inspect <image>`
+  - `rm` ➜ Delete an image.
+    - `docker image rm <image> ➜ Delete the specified image (locally)
+    - `docker image rm $(docker images -a -q)` ➜ Delete **all** (local) images.
+
 ## Containers
 
 Use `docker container <command>` where <command> is one of:
@@ -33,24 +56,24 @@ Use `docker container <command>` where <command> is one of:
     - `docker container rm <container>` ➜ Delete one or more **stopped** containers.
     - `docker container rm $(docker ps -a -q)` ➜ Delete **all stopped** containers.
 
-## Images
 
-Use `docker image <command>` where <command> is one of:
-  - `build` ➜ Build an image from a Dockerfile
-    - `docker image build -t <repo>/<image>:<tag> .` ➜ Build a Docker image named <image> from the Dockerfile located at the specified path or URL.
-      - `-t` is short for tag. Tells docker to tag the image with the provided tag. In this case <tag> .
-      - The `.` (period) at the end of the command tells Docker to build the image according to the Dockerfile in the current working directory.
-  - `push` ➜ Push an image to a remote registry.
-  - `ls` ➜ List images.
-    - `docker image ls` ➜ List your images. Shows you the size of each image, too.
-  - `history` ➜ See intermediate image info.
-    - `docker image history <image>`
-  - `inspect` ➜ See lots of info about an image, including the layers.
-    - `docker image inspect <image>`
-  - `rm` ➜ Delete an image.
-    - `docker image rm <image> ➜ Delete the specified image (locally)
-    - `docker image rm $(docker images -a -q)` ➜ Delete **all** (local) images.
+
+
   
+
+
+
+## Volumes
+
+Data in Docker can either be temporary or persistent.
+  - Temporary data :
+    Data can be kept temporarily inside a Docker container in two ways. By default, files created by an application inside a container are stored in the writable layer of the container. You don’t have to set anything up. This is the quick and dirty way. Just save a file and go about your business. However, when you container ceases to exist, so will your data. You have another option if you want better performance for saving temporary data with Docker. If you don’t need your data to persist beyond the life of the container, a tmpfs mount is a temporary mount that uses the host’s memory. A tmpfs mount has the benefit of faster read and write operations. Many times you will want your data to exist even after the container is long gone. You need to persist your data.
+
+  - Persistent Data :
+    There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
+
+
+
 ## Misc
 
   - `docker version` ➜ List info about your Docker Client and Server versions.
@@ -59,27 +82,4 @@ Use `docker image <command>` where <command> is one of:
     - `docker system prune -a --volumes`
       - `-a` is short for --all. Delete unused images, not just dangling ones.
       - `--volumes` Remove unused [volumes]().
-
-
-
-
-## Volumes
-
-Data in Docker can either be temporary or persistent.
-
-### Temporary data
-
-Data can be kept temporarily inside a Docker container in two ways.
-
-By default, files created by an application inside a container are stored in the writable layer of the container. You don’t have to set anything up. This is the quick and dirty way. Just save a file and go about your business. However, when you container ceases to exist, so will your data.
-
-You have another option if you want better performance for saving temporary data with Docker. If you don’t need your data to persist beyond the life of the container, a tmpfs mount is a temporary mount that uses the host’s memory. A tmpfs mount has the benefit of faster read and write operations.
-
-Many times you will want your data to exist even after the container is long gone. You need to persist your data.
-
-### Persistent Data
-
-There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
-
-
 
