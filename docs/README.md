@@ -6,8 +6,8 @@
 - `LABEL` ➜ provides metadata.
   ```sh
   LABEL multi.label1="value1" \
-      multi.label2="value2" \
-      other="value3"
+        multi.label2="value2" \
+        other="value3"
   ```
 - `ENV` ➜ sets a persistent environment variable.
 - `RUN` ➜ runs a command and creates an image layer. Used to install packages into containers.
