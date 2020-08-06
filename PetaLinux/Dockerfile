@@ -1,57 +1,53 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
-MAINTAINER z4yx <z4yx@users.noreply.github.com>
+MAINTAINER Semi-ATE <Semi-ATE@users.noreply.github.com>
 
 # build with docker build --build-arg PETA_VERSION=2018.1 --build-arg PETA_RUN_FILE=petalinux-v2018.1-final-installer.run -t petalinux:2018.1 .
 
-ARG UBUNTU_MIRROR=mirror.tuna.tsinghua.edu.cn
-
-#install dependences:
-RUN sed -i.bak s/archive.ubuntu.com/${UBUNTU_MIRROR}/g /etc/apt/sources.list && \
-  dpkg --add-architecture i386 && apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
-  build-essential \
-  sudo \
-  tofrodos \
-  iproute2 \
-  gawk \
-  net-tools \
-  expect \
-  libncurses5-dev \
-  tftpd \
-  update-inetd \
-  libssl-dev \
-  flex \
-  bison \
-  libselinux1 \
-  gnupg \
-  wget \
-  socat \
-  gcc-multilib \
-  libsdl1.2-dev \
-  libglib2.0-dev \
-  lib32z1-dev \
-  zlib1g:i386 \
-  libgtk2.0-0 \
-  screen \
-  pax \
-  diffstat \
-  xvfb \
-  xterm \
-  texinfo \
-  gzip \
-  unzip \
-  cpio \
-  chrpath \
-  autoconf \
-  lsb-release \
-  libtool \
-  libtool-bin \
-  locales \
-  kmod \
-  git \
-  rsync \
-  bc \
-  u-boot-tools \
+RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
+    build-essential \
+    sudo \
+    tofrodos \
+    iproute2 \
+    gawk \
+    net-tools \
+    expect \
+    libncurses5-dev \
+    tftpd \
+    update-inetd \
+    libssl-dev \
+    flex \
+    bison \
+    libselinux1 \
+    gnupg \
+    wget \
+    socat \
+    gcc-multilib \
+    libsdl1.2-dev \
+    libglib2.0-dev \
+    lib32z1-dev \
+    zlib1g:i386 \
+    libgtk2.0-0 \
+    screen \
+    pax \
+    diffstat \
+    xvfb \
+    xterm \
+    texinfo \
+    gzip \
+    unzip \
+    cpio \
+    chrpath \
+    autoconf \
+    lsb-release \
+    libtool \
+    libtool-bin \
+    locales \
+    kmod \
+    git \
+    rsync \
+    bc \
+    u-boot-tools \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
