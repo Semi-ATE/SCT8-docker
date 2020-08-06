@@ -1,6 +1,17 @@
 ## Dockerfile
 
-
+`FROM` ➜ specifies the base (parent) image.
+`LABEL` ➜ provides metadata. Good place to include maintainer info.
+`ENV` ➜ sets a persistent environment variable.
+`RUN` ➜ runs a command and creates an image layer. Used to install packages into containers.
+`COPY` ➜ copies files and directories **to** the container.
+`ADD` ➜ like `COPY`, but you can use also a URL as source, or a .tar file that automatically unpacked in the container.
+`CMD` ➜ The 'entry point' for an executing container, there thus can be only **one** CMD!
+`WORKDIR` ➜ sets the working directory for the instructions that follow.
+`ARG` ➜ defines a variable to pass to Docker at build-time.
+`ENTRYPOINT` ➜ provides command and arguments for an executing container. Arguments persist.
+`EXPOSE` ➜ exposes a port.
+`VOLUME` ➜ creates a directory mount point to access and store persistent data.
 
 
 ## Images
@@ -56,13 +67,6 @@ Use `docker container <command>` where <command> is one of:
     - `docker container rm <container>` ➜ Delete one or more **stopped** containers.
     - `docker container rm $(docker ps -a -q)` ➜ Delete **all stopped** containers.
 
-
-
-
-  
-
-
-
 ## Data
 
 Data in Docker can either be temporary or persistent.
@@ -91,8 +95,6 @@ A Volume is a a file system that lives on a host machine outside of any containe
   - nameable
   - able to have their content pre-populated by a container
   - handy for testing
-
-That’s a lot of useful functionality! Now let’s look at how you make a Volume.
 
 #### Creating Volumes
 
