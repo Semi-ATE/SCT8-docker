@@ -16,21 +16,33 @@ Use `docker container <command>` where <command> is one of:
       - `-d` is short for --detach. Run the container in the background. Allows you to use the terminal for other commands while your container runs.
   - `ls` ➜ List running containers.
     - `docker container ls` ➜ List running containers. Also provides useful information about the containers.
-    - `docker container ls -a -s`
+    - `docker container ls -a -s` ➜ List all containers (running or not) with their sizes
       - `-a` is short for -all. List all containers (not just running ones).
       - `-s` is short for --size. List the size for each container.
   - `inspect` ➜ See lots of info about a container.
+    - `docker container inspect <container>`
   - `logs` ➜ Print logs.
+    - `docker container logs <container>`
   - `stop` ➜ Gracefully stop running container.
+    - `docker container stop <container>` ➜ Gives a default of 10 seconds before container shutdown to finish any processes.
+    - `docker container stop $(docker ps -q)` ➜ Stop **all running** containers.
   - `kill` ➜ Stop main process in container abruptly.
-  - `rm` ➜ Delete a stopped container.
+    - `docker container kill <container>` ➜ It’s like pulling the plug on the TV. Prefer stop in most situations!
+    - `docker container kill $(docker ps -q)` ➜ Kill **all running** containers.
+  - `rm` ➜ Delete a **stopped** container.
+    - `docker container rm <container>` ➜ Delete one or more **stopped** containers.
+    - `docker container rm $(docker ps -a -q)` ➜ Delete **all stopped** containers.
 
 ## Images
 
 Use `docker image <command>` where <command> is one of:
   - `build` ➜ Build an image.
+    - `docker image build -t <repo>/<image>:<tag> .` ➜ Build a Docker image named <image> from the Dockerfile located at the specified path or URL.
+      - `-t` is short for tag. Tells docker to tag the image with the provided tag. In this case <tag> .
+      - The `.` (period) at the end of the command tells Docker to build the image according to the Dockerfile in the current working directory.
   - `push` ➜ Push an image to a remote registry.
   - `ls` ➜ List images.
+    - `docker image ls` ➜ List your images. Shows you the size of each image, too.
   - `history` ➜ See intermediate image info.
   - `inspect` ➜ See lots of info about an image, including the layers.
   - `rm` ➜ Delete an image.
