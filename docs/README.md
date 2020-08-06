@@ -74,7 +74,7 @@ Data in Docker can either be temporary or persistent.
   
     There are two ways to persist data beyond the life of the container. One way is to bind mount a file system to the container. With a bind mount, processes outside Docker also can modify the data.
 
- ![volumes](/docs/volume.jpg)
+ ![volumes](/docs/docker_volume.png)
 
 ## Misc
 
