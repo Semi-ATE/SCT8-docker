@@ -154,3 +154,6 @@ The syntax for --mount is a bit more verbose, but it’s preferred over --volume
       - `-a` is short for --all. Delete unused images, not just dangling ones.
       - `--volumes` Remove unused [volumes]().
 
+## References
+  - [Create a Docker Image From a Container](https://www.scalyr.com/blog/create-docker-image/)
+  
