@@ -131,71 +131,19 @@ Then, when the container is created, Docker will create the volume with any data
 
 If the volume is associated with any containers, you cannot remove it until the containers are deleted. Even then, Docker sometimes doesn’t realize that the containers are gone. If this occurs, you can use `docker system prune` to clean up all your Docker resources. Then you should should be able to delete the volume.
 
-#### Where your data might be stored
+#### Where your data might be stored (forget --volume, use --mount)
 
-Working with --mount vs. --volume
-
-You will often use flags to refer to your volumes. For example, to create a volume at the same time you create a container use the following:
-
-docker container run --mount source=my_volume, target=/container/path/for/volume my_image
-
-In the old days (i.e. pre-2017) 😏the --volume flag was popular. Originally, the -v or --volume flag was used for standalone containers and the --mount flag was used with Docker Swarms. However, beginning with Docker 17.06, you can use --mount in all cases.
+```sh
+$ docker container run --mount type=volume, src=<volume>, dst=/container/path/for/volume <image>
+```
 
 The syntax for --mount is a bit more verbose, but it’s preferred over --volume for several reasons. --mount is the only way you can work with services or specify volume driver options. It’s also simpler to use.
 
-You’ll see a lot of -v’s in existing code. Beware that the format for the options is different for --mount and --volume. You often can’t just replace a -v in your existing code with a --mount and be done with it.
-
-The biggest difference is that the -v syntax combines all the options together in one field, while the --mount syntax separates them. Let’s see --mount in action!
-Image for post
-Image for post
-Easy enough to mount
-
---mount — options are key-value pairs. Each pair is formatted like this: key=value, with a comma between one pair and the next. Common options:
-
-    type — mount type. Options are bind, volume, or tmpfs. We’re all about the volume.
-    source — source of the mount. For named volumes, this is the name of the volume. For unnamed volumes, this option is omitted. The key can be shortened to src.
-    destination — the path where the file or directory is mounted in the container. The key can be shortened to dst or target.
-    readonly —mounts the volume as read-only. Optional. Takes no value.
-
-Here’s an example with lots of options:
-
-docker run --mount type=volume,source=volume_name,destination=/path/in/container,readonly my_image
-
-Image for post
-Image for post
-Volumes are like spices — they make most things better. 🥘
-Wrap
-Recap of Key Volume Commands
-
-    docker volume create
-    docker volume ls
-    docker volume inspect
-    docker volume rm
-    docker volume prune
-
-Common options for the --mount flag in docker run --mount my_options my_image:
-
-    type=volume
-    source=volume_name
-    destination=/path/in/container
-    readonly
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+`--mount` options are key-value pairs:
+  - `type` ➜ mount type [`bind`, `volume`, `tmpfs`].
+  - `source`/`src` ➜ source of the mount (omitted for unnamed volumes)
+  - `destination`/`dst`/`target` ➜ the path where the file or directory is mounted **in the container**.
+  - `readonly` ➜ mounts the volume as read-only (omitted for read/write access)
 
 ## Misc
 
