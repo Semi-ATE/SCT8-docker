@@ -1,0 +1,27 @@
+#!/bin/sh
+# the next line restarts using tclsh \
+exec expect "$0" "$@"
+
+set timeout -1
+
+spawn ./petalinux-v2020.1-final-installer.run -d /home/semiate/petalinux
+match_max 100000
+expect -exact "Press Enter to display the license agreements"
+sleep .1
+send -- "\r"
+sleep .1
+send -- "q"
+expect "* >*"
+sleep .1
+send -- "y\r"
+sleep .1
+send -- "q"
+expect "* >*"
+sleep .1
+send -- "y\r"
+sleep .1
+send -- "q"
+expect "* >*"
+sleep .1
+send -- "y\r"
+expect eof

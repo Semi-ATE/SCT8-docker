@@ -1,0 +1,37 @@
+By default petalinux uses sstate-cache and download mirrors from petalinux.xilinx.com
+This README is for the users who uses tool completely offline.
+
+Setting sstate cache
+
+1) Extract the downloaded tar contents of sstate-cache at any location
+2) run petalinux-config
+         -> Yocto Settings
+             ->Local sstate feeds settings
+                  ->local sstate feeds url
+                          (press Enter)
+3) Provide the path of sstate-cache from above
+           Ex: /<path>/aarch64  for ZynqMP projects
+               /<path>/arm      for Zynq projects
+               /<path>/mb-full  for MB AXI full projects
+
+4) Save the configurations to use the sstate-cache
+
+Setting download mirror
+
+1) Extract the downloaded tar contents of sstate-cache at any location
+2) run petalinux-config
+        -> Yocto Settings
+                -> Add pre-mirror url
+						          ->  (press Enter)
+							            Clear default value
+
+3) Provide the path of sstate-cache from above
+        file://<path>/downloads for all projects
+
+4) Save the configurations to use the download mirrors
+
+5) Verify the changes in build/conf/plnxtool.conf
+6) petalinux-build
+
+
+

@@ -1,3 +1,11 @@
+###########################
+### big files           ###
+###########################
+*.run
+*.tar.gz
+*.tgz
+*.bin
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
