@@ -103,7 +103,7 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 ENV PETA_RUN_FILE "petalinux-v${PETA}-final-installer.run"
 ENV PETA_EXP_FILE "petalinux-v${PETA}-final-installer.exp"
 ENV SSTATE_ARCHIVE "sstate_aarch64_${PETA}.tar.gz"
-ENV DOWNLOAD_ARCHIVE "downloads_${PETA}.tar.gz"
+#ENV DOWNLOAD_ARCHIVE "downloads_${PETA}.tar.gz"
 
 WORKDIR ${HOMEDIR}
 
@@ -117,20 +117,31 @@ chmod a+rx ${HOMEDIR}/${PETA_EXP_FILE} && \
 su ${USER} ${HOMEDIR}/${PETA_EXP_FILE} && \
 echo "source ${HOMEDIR}/petalinux/settings.sh" >> ${HOMEDIR}/.bashrc && \
 rm -f ${HOMEDIR}/${PETA_RUN_FILE} ${HOMEDIR}/${PETA_EXP_FILE} && \
-mkdir ./sstate-cache && \
-pv ${HOMEDIR}/${SSTATE_ARCHIVE} | tar xzf - -C ./sstate-cache
+tar -xvzf ${SSTATE_ARCHIVE} && \
+mv ./sstate_aarch64_${PETA}/aarch64/ ./petalinux/aarch64/ && \
+rmdir ./sstate_aarch64_${PETA} && \
+echo PetaLinux install Done.
 
 # bras installation
 ############################################################################
 ENV BRAS_ARCHIVE "bras-${BRAS}.tar.gz"
-ENV BRAS_PATCH "bras-${BRAS}.patch"
+ENV BRAS_TMP "./bras-${BRAS}"
+ENV BRAS_PATCH "brasfile"
+ENV BRAS_PATCH_FILE "${BRAS_PATCH}.patch"
 
 WORKDIR ${HOMEDIR}
 
 COPY ${BRAS_ARCHIVE} .
-COPY ${BRAS_PATCH} .
+COPY ${BRAS_PATCH_FILE} .
 
-
+RUN mkdir ${BRAS_TMP} && \
+tar xvzf ${BRAS_ARCHIVE} && \
+patch -u -b ${BRAS_TMP}/${BRAS_PATCH} -i ${BRAS_PATCH_FILE} && \
+cd ${BRAS_TMP} && \
+tclsh bras install prefix=/usr && \
+cd .. && \
+rm -rf ${BRAS_TMP} && \
+echo bras install Done.
 
 # prepare the SCT8-Board project
 ############################################################################

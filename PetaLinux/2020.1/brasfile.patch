@@ -1,0 +1,11 @@
+--- brasfile	2002-02-24 12:53:50.000000000 +0100
++++ brasfile.new	2020-08-18 16:13:33.494119821 +0200
+@@ -35,7 +35,7 @@
+ ##    TCLSH=mytclsh
+ ## The value is entered into the main script to allow UNIX-like start
+ ## of the script as an executable file.
+-getenv TCLSH tclsh8.0
++getenv TCLSH tclsh
+ 
+ ########################################################################
+ ## A sanity check to avoid installation with an old version of bras
